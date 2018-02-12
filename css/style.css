@@ -1,0 +1,56 @@
+#calculatorSurface {
+	display: grid;
+	width: 500px;
+	height: 600px;
+	grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr 1fr;
+	/*justify-items: stretch;*/
+	border: 10px solid black;
+	margin: 25px auto; /* set all 4 margins to 25px and use auto to center it horizontally */
+}
+
+/*
+#reset {
+	display: block;
+	margin: 0 auto;
+	width: 250px;
+	height: 60px;
+}
+*/
+h2 {
+	padding-top: 60px;
+	text-align: center;
+}
+
+.screen {
+	grid-column: 6/1;
+	border: 4px solid black;
+	font: 48pt bold;
+	padding-top: 10px;
+	
+}
+/*
+#blank {
+	grid-column: 2/4;
+}
+*/
+.number {
+	background-color: HoneyDew;
+	grid-column: span 2;
+}
+
+#clear {
+	background-color: #ff9fa8;
+}
+
+#backspace {
+	grid-column: span 2;
+}
+
+#decimal {
+	grid-column: span 2;
+}
+
+button {
+	font: 24pt bold;
+	box-shadow: 8px grey;
+}
