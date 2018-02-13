@@ -1,5 +1,6 @@
 // get all the keys from the document
-var keys = document.querySelectorAll(`#calculatorSuface button`);
+// var calc = document.querySelector("#calculatorSurface");
+var keys = document.querySelectorAll("#calculatorSurface button");
 var operators = [`+`, `-`, `*`, `/`];
 var decimalAdded = false;
 
@@ -31,7 +32,7 @@ for(let i = 0; i < keys.length; i++) {
 				input.innerHTML = eval(equation);
 				decimalAdded = false;
 		// add some checks for user error
-		} else if(operators.index(buttonVal) > -1) {
+		} else if(operators.indexOf(buttonVal) > -1) {
 			// if operator is clicked last, get the last character from the equation instead
 			var lastChar = inputVal[inputVal.length -1];
 		}
