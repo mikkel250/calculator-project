@@ -31,8 +31,11 @@ for(let i = 0; i < keys.length; i++) {
 					input.innerHTML = eval(equation);
 					decimalAdded = false;
 			}
-		// add some checks for user error
-		} else if(operators.indexOf(buttonVal) > -1) {
+			// if backspace button pressed, replace the last char with empty char
+		} else if (buttonVal == 'Backspace') {
+			input.innerHTML = inputVal.replace(/.$/, "");
+			// add some checks for user error
+		} else if (operators.indexOf(buttonVal) > -1) {
 				// if operator is clicked last, get the last character from the equation instead
 				var lastChar = inputVal[inputVal.length -1];
 			
