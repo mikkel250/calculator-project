@@ -19,45 +19,44 @@ for(let i = 0; i < keys.length; i++) {
 			// if equals button is pressed, calculate and display result
 		} else if(buttonVal == '=') {
 			// take everything in the screen and store it (as string) into the variable equation
-			var equation = inputVal;
-			var lastChar = equation[equation.length -1];
-			// check the last character of the equation and remove decimal or operator if present
-		}
-			if(operators.indexOf(lastChar) > -1 || lastChar == `.`){
-				equation = equation.replace(/.$/, "");
+				var equation = inputVal;
+				var lastChar = equation[equation.length -1];
+				// check the last character of the equation and remove decimal or operator if present
+				
+				if(operators.indexOf(lastChar) > -1 || lastChar == '.'){ equation = equation.replace(/.$/, "");	}
+				
+				if(equation){
+					// the eval function evaluates javascript code represented as a string
+					// so what is essentially being done here is using the screen to store the whole operation.
+					input.innerHTML = eval(equation);
+					decimalAdded = false;
 			}
-			if(equation){
-				// the eval function evaluates javascript code represented as a string
-				// so what is essentially being done here is using the screen to store the whole operation.
-				input.innerHTML = eval(equation);
-				decimalAdded = false;
 		// add some checks for user error
 		} else if(operators.indexOf(buttonVal) > -1) {
-			// if operator is clicked last, get the last character from the equation instead
-			var lastChar = inputVal[inputVal.length -1];
-		}
-			if(inputVal != "" && operators.indexOf(lastChar) == -1) {
-				input.innerHTML += buttonVal;
+				// if operator is clicked last, get the last character from the equation instead
+				var lastChar = inputVal[inputVal.length -1];
+			
+				if(inputVal != "" && operators.indexOf(lastChar) == -1) {
+					input.innerHTML += buttonVal;
 				//allow minus if the input string is empty (for negative values)
-			} else if(inputVal == "" && buttonVal == `-`) {
-				input.innerHTML += buttonVal;
-			}
+				} else if(inputVal == "" && buttonVal == `-`) {
+					input.innerHTML += buttonVal;
+				}
 			// replace the last operator (if exists) with the newly passed operator
-			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
-				/* the "." matches any character, while the $ denotes the end of the string, so anything  
+			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) { input.innerHTML = inputVal.replace(/.$/, buttonVal); }
+				/* above: the "." matches any character, while the $ denotes the end of the string, so anything  
 				(an operator in this case, determined above) at the end of the string will be replaced by the 
 				new operator */
-				input.innerHTML = inputVal.replace(/.$/, buttonVal);
+				
+		decimalAdded = false;
 			
-			decimalAdded = false;
-		
 			// using the decimalAdded flag will prevent the use of more than one decimal per string
-	} else if(buttonVal == `.`) {
-		if(!decimalAdded) {
-			input.innerHTML += buttonVal;
-			decimalAdded = true;
-		}
-		} else {
+		} else if(buttonVal == `.`) {
+				if(!decimalAdded) {
+				input.innerHTML += buttonVal;
+				decimalAdded = true;
+			}
+		} else { 
 			input.innerHTML += buttonVal;
 		}
 		// prevent page jumps
